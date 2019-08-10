@@ -1,0 +1,73 @@
+<h1>Sign-up</h1>
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+  <label>
+    Name:
+    <input type="text" formControlname="name">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+      <div *ngIf="name.errors.required">
+        Name is required.
+      </div>
+      <div *ngIf="name.errors.minlength">
+        Name must be at least 4 characters long.
+      </div>
+      <div *ngIf="name.errors.pattern">
+        Name must be valid without special characters and numbers.
+      </div>
+    </div>
+  </label>
+  <label>
+    Email:
+    <input type="email" formControlname="email">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+
+        <div *ngIf="email.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="email.errors.pattern">
+          Email must be valid.
+        </div>
+      </div>
+  </label>
+  <label>
+    Password:
+    <input type="password" formControlname="pass">
+    <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="alert alert-danger">
+
+        <div *ngIf="pass.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="pass.errors.minlength">
+          Password must atleast have 8 characters.
+        </div>
+      </div>
+  </label>
+  <label>
+    Re-enter Password:
+    <input type="password" formControlname="repass">
+    <div *ngIf="repass.invalid && (repass.dirty || repass.touched)" class="alert alert-danger">
+
+        <div *ngIf="repass.errors.required">
+          Password is required.
+        </div>
+        <div *ngIf="repass.errors.minlength">
+          Password mismatch.
+        </div>
+      </div>
+  </label>
+  <label>
+    Contact Number:
+    <input type="number" formControlname="mobile">
+    <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="alert alert-danger">
+
+        <div *ngIf="mobile.errors.required">
+          Contact number is required.
+        </div>
+        <div *ngIf="mobile.errors.pattern">
+          Contact number must have 10 numbers.
+        </div>
+      </div>
+  </label>
+  <button class="btn btn-primary" type="submit" [disabled]="!signupForm.valid">Submit</button>
+  
+</form>

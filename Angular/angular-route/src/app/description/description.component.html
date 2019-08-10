@@ -1,0 +1,17 @@
+<table>
+    <tr>
+        <th>Label</th>
+        <th>Status</th>
+        <th>Remove</th>
+    </tr>    
+    <tr *ngFor="let todo of todos">
+        <td>{{todo.label}}</td>
+        <td (click)="changeStatus(todo)">{{todo.status}}</td>
+        <td>
+             <button (click)="deleteTodo(todo)">Delete</button>
+        </td>
+    </tr>
+</table>
+<input type="text" #newLabel/>
+<button (click)="addTodo(newLabel.value)" newLabel.value="">Add</button>
+
